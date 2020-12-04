@@ -1,4 +1,4 @@
-# Antennapatters
+# Antennapatterns
 Calculate Polar Plots from antenna patterns
 
 NOTE: No guarantee for proper operation, use with care, use your head and make due dilligence checks of main values
