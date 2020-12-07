@@ -27,7 +27,7 @@ import numpy as np
 import math
 
 g = 8 # Gmax [dBi]
-phi1 = 110  # angle where the attenuation is highest
+phi1 = 100  # angle where the attenuation is highest
 g_phi1 = -18 # [dBi] at highest attenuation points
 g_phi180 = -5 # [dBi] at 180 point
 phi180 = 180 # kind of a constant
@@ -39,14 +39,14 @@ x1 = np.arange(-phi1, phi1, .1) # main lobe
 x2 = np.concatenate((np.arange(phi1, 180, .1), np.arange(-180, -phi1, .1)), axis = 0) # back lobe
 
 # polar diagram
-ax = plt.subplot(111, projection='polar', theta_offset=np.pi/2, rlabel_position=-110)
+ax = plt.subplot(111, projection='polar', theta_offset=np.pi/2, rlabel_position=-140)
 ax.set_thetalim(thetamin=-180, thetamax=180)
 ax.set_thetagrids([-150, -120, -90, -60, -30, 0, 30, 60, 90, 120, 150, 180])
 ax.plot(x1/180*np.pi, g_phi1 + (g - g_phi1) * np.sqrt(np.cos(x1/phi1/2*np.pi)), 'b')
 ax.plot(x2/180*np.pi, g_phi1 + (g_phi180 - g_phi1) * np.sin((np.abs(x2)-phi1)/(180-phi1)/2*np.pi), 'b')
 
 ax.set_rmax(8)
-ax.set_rticks([-15,-10,-5, 0, 5, 8])  # less radial ticks
+ax.set_rticks([-22, -17, -12, -7, -2, 0, 2, 4, 6, 8])  # less radial ticks, as required by WRS-20 pres. "03 Submission of coordination requests _XQW", pg. 11
 # ax.set_xlabel("Phi (degrees) vs. Gain (dBi)")
 ax.grid(True)
 
