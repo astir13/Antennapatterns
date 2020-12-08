@@ -1,6 +1,6 @@
 # Python Program to plot Antenna reference pattern of a 3-element X-yagi for VDE-SAT
 # 
-# G = G_min + (G_max - G_min) * sqrt(cos(pi * phi * phi1 / 2))                     for -phi1 <= phi <= phi1
+# G = G_min + (G_max - G_min) * sqrt(cos(pi * phi / phi1 / 2))                     for -phi1 <= phi <= phi1
 # G = G_min + (G_back - G_min) * sin( (abs(phi) - phi1) / (180 - phi1) / 2 * pi)   for phi1 < abs(phi) <= 180
 # 
 # Copyright December 2020, Stefan Pielmeier
