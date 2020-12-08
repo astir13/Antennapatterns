@@ -46,7 +46,7 @@ ax.plot(x1/180*np.pi, g_phi1 + (g - g_phi1) * np.sqrt(np.cos(x1/phi1/2*np.pi)), 
 ax.plot(x2/180*np.pi, g_phi1 + (g_phi180 - g_phi1) * np.sin((np.abs(x2)-phi1)/(180-phi1)/2*np.pi), 'b')
 
 ax.set_rmax(8)
-ax.set_rticks([-22, -17, -12, -7, -2, 0, 2, 4, 6, 8])  # less radial ticks, as required by WRS-20 pres. "03 Submission of coordination requests _XQW", pg. 11
+ax.set_rticks([-22, -17, -12, -7, -2, 3, 8])  # less radial ticks, as required by WRS-20 pres. "03 Submission of coordination requests _XQW", pg. 11
 # ax.set_xlabel("Phi (degrees) vs. Gain (dBi)")
 ax.grid(True)
 

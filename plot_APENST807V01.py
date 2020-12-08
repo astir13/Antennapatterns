@@ -28,13 +28,13 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import math
-g1 = 8 # Gmax [dBi]
-phi1 = 100  # angle where the attenuation is highest
-g_phi1 = -18 # [dBi] at highest attenuation points
-g_phi180 = -4 # [dBi] at 180 point
+g1 = 37 # Gmax [dBi]
+phi1 = 180  # angle where the attenuation is highest
+g_phi1 = 7 # [dBi] at highest attenuation points
+g_phi180 = -15 # [dBi] at 180 point
 phi180 = 180 # kind of a constant
-coefA = 8 # G [dBi] at 1 degree
-coefB = (coefA - g_phi1)/np.log(phi1) # calculated coefB
+coefA = 37 # G [dBi] at 1 degree
+coefB = 25 #(coefA - g_phi1)/np.log(phi1) # calculated coefB
 print("coefB = " + str(coefB) + "\n")
 coefC = (g_phi1 - (g_phi180 * np.log(phi1) / np.log(phi180))) / (1 - (np.log(phi1) / np.log(phi180)))
 print("coefC = " + str(coefC) + "\n")
@@ -45,7 +45,7 @@ x2 = np.arange(1, phi1, .1) # main lobe courve
 x3 = np.arange(phi1, 180, .1) # secondary courve
 
 #linear diagram
-if (False):
+if (True):
   fig=plt.figure()
   axes1 = fig.add_axes([0.1, 0.1, 0.8, 0.8]) # main axes
   #axes2 = fig.add_axes([0.55, 0.55, 0.3, 0.3]) # inset axes
@@ -61,19 +61,20 @@ if (False):
   plt.show()
 
 # polar diagram
-ax = plt.subplot(111, projection='polar', theta_offset=np.pi/2, rlabel_position=-110)
-ax.set_thetalim(thetamin=-180, thetamax=180)
-ax.set_thetagrids([-135, -90, -45, 0, 45, 90, 135, 180])
-ax.plot(x1/180*np.pi, g1 * np.ones(len(x1)))
-ax.plot(x2/180*np.pi, coefA - (coefB * np.log(x2)), 'b')
-ax.plot(x3/180*np.pi, coefC - (coefD * np.log(x3)), 'b')
-ax.plot(-x1/180*np.pi, g1 * np.ones(len(x1)), 'b')
-ax.plot(-x2/180*np.pi, coefA - (coefB * np.log(x2)), 'b')
-ax.plot(-x3/180*np.pi, coefC - (coefD * np.log(x3)), 'b')
-ax.set_rmax(8)
-ax.set_rticks([-20,-15,-10,-5, 0, 5, 8])  # less radial ticks
-ax.set_xlabel("Phi (degrees) vs. Gain (dBi)")
-ax.grid(True)
+if (False):
+  ax = plt.subplot(111, projection='polar', theta_offset=np.pi/2, rlabel_position=-110)
+  ax.set_thetalim(thetamin=-180, thetamax=180)
+  ax.set_thetagrids([-135, -90, -45, 0, 45, 90, 135, 180])
+  ax.plot(x1/180*np.pi, g1 * np.ones(len(x1)))
+  ax.plot(x2/180*np.pi, coefA - (coefB * np.log(x2)), 'b')
+  ax.plot(x3/180*np.pi, coefC - (coefD * np.log(x3)), 'b')
+  ax.plot(-x1/180*np.pi, g1 * np.ones(len(x1)), 'b')
+  ax.plot(-x2/180*np.pi, coefA - (coefB * np.log(x2)), 'b')
+  ax.plot(-x3/180*np.pi, coefC - (coefD * np.log(x3)), 'b')
+  ax.set_rmax(8)
+  ax.set_rticks([-20,-15,-10,-5, 0, 5, 8])  # less radial ticks
+  ax.set_xlabel("Phi (degrees) vs. Gain (dBi)")
+  ax.grid(True)
 
-ax.set_title("Antenna reference pattern ITU APENST807 V01", va='bottom')
-plt.show()
+  ax.set_title("Antenna reference pattern ITU APENST807 V01", va='bottom')
+  plt.show()
